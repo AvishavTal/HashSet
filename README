@@ -7,9 +7,11 @@ avishavtal
 =      File description     =
 =============================
 LinkedListFacadeSet.java - warps a linked list so it can be use in the open hash set.
-
-
-
+SimpleHashSet.java - A superclass for implementations of hash-sets implementing the SimpleSet interface.
+ClosedHashSet.java - implement colsed hash set.
+OpenHashSet.java - implemnts open hash set.
+CollectionFacadeSet.java - Wraps an underlying Collection and serves to both simplify its API and give it a common type with the implemented SimpleHashSets.
+SimpleSetPerformanceAnalyzer.java - this class analyze the performance of various implementations of simple set.
 
 
 
