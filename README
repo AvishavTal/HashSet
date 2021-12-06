@@ -1,0 +1,114 @@
+avishavtal
+
+
+
+
+=============================
+=      File description     =
+=============================
+LinkedListFacadeSet.java - warps a linked list so it can be use in the open hash set.
+
+
+
+
+
+
+=============================
+=  Implementation details   =
+=============================
+the table of the open hash set is a table of LinkedListFacade.
+
+the deletion mechanism in closed has set is to put null in the place of the value we want to delete. and it is
+ not a problem because when we search for another value with the same hash we check if its in every match cell
+ in the table until we find it. and to insert new value with the same hash we put it in the first match cell.
+
+for the delete mechanism in the ClosedHushSet i added a boolian
+list as big as the capacity that holds for each cell corresponding to the hashset if it is deleted before.
+
+=============================
+=        results            =
+=============================
+
+#These values correspond to the time it takes (in ms) to insert data1 to all data structures
+OpenHashSet_AddData1 = 34498
+ClosedHashSet_AddData1 = 70382
+TreeSet_AddData1 = *49*
+LinkedList_AddData1 = 34250
+HashSet_AddData1 = 58
+
+#These values correspond to the time it takes (in ms) to insert data2 to all data structures
+OpenHashSet_AddData2 = 149
+ClosedHashSet_AddData2 = 15
+TreeSet_AddData2 = 30
+LinkedList_AddData2 = 18659
+HashSet_AddData2 = *6*
+
+#These values correspond to the time it takes (in ns) to check if "hi" is contained in
+#the data structures initialized with data1
+OpenHashSet_Contains_hi1 = 28
+ClosedHashSet_Contains_hi1 = 32
+TreeSet_Contains_hi1 = 85
+LinkedList_Contains_hi1 = 462843
+HashSet_Contains_hi1 = *26*
+
+#These values correspond to the time it takes (in ns) to check if "-13170890158" is contained in
+#the data structures initialized with data1
+OpenHashSet_Contains_negative = 544677
+ClosedHashSet_Contains_negative = 1740164
+TreeSet_Contains_negative = 138
+LinkedList_Contains_negative = 546047
+HashSet_Contains_negative = *44*
+
+#These values correspond to the time it takes (in ns) to check if "23" is contained in
+#the data structures initialized with data2
+OpenHashSet_Contains_23 = 34
+ClosedHashSet_Contains_23 = *31*
+TreeSet_Contains_23 = 55
+LinkedList_Contains_23 = 123
+HashSet_Contains_23 = 33
+
+#These values correspond to the time it takes (in ns) to check if "hi" is contained in
+#the data structures initialized with data2
+OpenHashSet_Contains_hi2 = 32
+ClosedHashSet_Contains_hi2 = 46
+TreeSet_Contains_hi2 = 84
+LinkedList_Contains_hi2 = 389061
+HashSet_Contains_hi2 = *29*
+
+
+data1 vs data2:
+OpenHashSet: AddData1-AddData2 = 34498-149 = 34349
+ClosedHashSet: AddData1-AddData2 = 70382-15= 70367
+TreeSet: AddData1-AddData2 = 49-30 = 19
+LinkedList: AddData1-AddData2 = 34250-18659 = 15591
+HashSet:  AddData1-AddData2 = 58-6= 52
+
+to warm up i made similar array of sets and before i add the data to each set i add data with the same size of
+ data1 and data2 and before the contains measures i called to contains for every value in the warm up array.
+
+
+the closed hash set has bad results in adding data1 because every time we  add a new word with the same hash
+we need to do a lot of iterations to place it. and every time we re hash we need to do it over and over
+again.
+
+
+the open hash set has bad results in adding because every time we re add a new word we need to iterate over
+all the linked list in the corresponding cell in the array to make suor it not contains this word already
+(we can see that the time of the open hash is close to the time of linked list. its not exactly the same
+because the re hashing in the open hash set.)
+
+
+the hash set of java has no weaknesses.
+tree set is not the most efficient but very efficient for all the operations we measured.
+the linked list not god for finding something and to add a new word we need to check if it contains it
+already.
+the closed hash set is more efficient with data with the different hash code then the open hash set, but with
+data with a lot of strings with the same hash code the open hash is better.
+.
+
+
+
+
+
+
+
